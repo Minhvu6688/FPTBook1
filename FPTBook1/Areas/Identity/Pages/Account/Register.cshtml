@@ -25,7 +25,7 @@
             <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
         </div>
         
-        @*   Bước 5: Tạo drop-down list trong form Registration để lựa chọn Role cho người dùng *@
+        @*Step 5: Create a drop-down list in the Signup form to choose a role for the *@ 
         <div class="form-group">
             <label asp-for="Input.UserRole"></label>
             <select class="form-control" asp-for="Input.UserRole" asp-items="@(Model.Roles)">

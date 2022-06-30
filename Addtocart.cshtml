@@ -1,0 +1,110 @@
+﻿@model FPTBook1.Models.Cart
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Document</title>
+</head>
+<body>
+    <center>
+    <h1 class="text-success">Book Detail</h1><br />
+    </center><br />
+    <form action="Addtocart" method="post">
+            <div id="profile" class="column half"> 
+            @foreach(var book in ViewBag.Book)
+            {
+                <input type="hidden" asp-for="BookId" value="@book.Id">
+                <img src="@book.Image" width="250" height="350" /> <br />  
+                <h2>@book.Name</h2>
+            }
+        </div>
+            <div class="column last">
+                    <h3>Cart detail</h3><br>
+                    <div class="form-group">
+                        <label asp-for="Quantity"></label>
+                        <input style="width: 100px;" class="form-control" asp-for="Quantity" />
+                    <span class="text-black-50 text-danger" asp-validation-for="Quantity"></span>
+                    </div>
+
+                    <input class="btn btn-primary" type="submit" value="Buy" onclick=" return confirm('Confirm buying?');">
+                    <a class="btn btn-primary" asp-controller="Book" asp-action="Index">Cancel</a>
+                </div>
+    </form>
+</body>
+</html>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Type</th>
+      <th scope="col">Column heading</th>
+      <th scope="col">Column heading</th>
+      <th scope="col">Column heading</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="table-active">
+      <th scope="row">Active</th>
+      <td>Column content</td>
+      <td>Column content</td>
+      <td>Column content</td>
+    </tr>
+    <tr>
+      <th scope="row">Default</th>
+      <td>Column content</td>
+      <td>Column content</td>
+      <td>Column content</td>
+    </tr>
+    <tr class="table-primary">
+      <th scope="row">Primary</th>
+      <td>Column content</td>
+      <td>Column content</td>
+      <td>Column content</td>
+    </tr>
+    <tr class="table-secondary">
+      <th scope="row">Secondary</th>
+      <td>Column content</td>
+      <td>Column content</td>
+      <td>Column content</td>
+    </tr>
+    <tr class="table-success">
+      <th scope="row">Success</th>
+      <td>Column content</td>
+      <td>Column content</td>
+      <td>Column content</td>
+    </tr>
+    <tr class="table-danger">
+      <th scope="row">Danger</th>
+      <td>Column content</td>
+      <td>Column content</td>
+      <td>Column content</td>
+    </tr>
+    <tr class="table-warning">
+      <th scope="row">Warning</th>
+      <td>Column content</td>
+      <td>Column content</td>
+      <td>Column content</td>
+    </tr>
+    <tr class="table-info">
+      <th scope="row">Info</th>
+      <td>Column content</td>
+      <td>Column content</td>
+      <td>Column content</td>
+    </tr>
+    <tr class="table-light">
+      <th scope="row">Light</th>
+      <td>Column content</td>
+      <td>Column content</td>
+      <td>Column content</td>
+    </tr>
+    <tr class="table-dark">
+      <th scope="row">Dark</th>
+      <td>Column content</td>
+      <td>Column content</td>
+      <td>Column content</td>
+    </tr>
+  </tbody>
+</table>

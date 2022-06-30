@@ -13,12 +13,12 @@ namespace FPTBook1.Controllers
         {
             context = _context;
         }
-        public IActionResult Index()
+        public IActionResult detail()
         {
             var cart = context.Carts.ToList();
             return View(cart);
         }
-        public IActionResult Detail(int? id)
+        public IActionResult Index(int? id)
         {
             if (id == null)
             {
@@ -26,7 +26,7 @@ namespace FPTBook1.Controllers
             }
             var cart = context.Carts
                 .Include(b => b.Book)
-                .Include(c => c.User)
+                .Include(c => c.Cart_Date)
                 .FirstOrDefault(o => o.Id == id);
             return View(cart);
         }
@@ -54,6 +54,16 @@ namespace FPTBook1.Controllers
             }
             var cart = context.Carts.Find(id);
             context.Carts.Remove(cart);
+            context.SaveChanges();
+            return RedirectToAction("Index");
+        }
+        public IActionResult Buy(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+            var cart = context.Carts.Find(id);
             context.SaveChanges();
             return RedirectToAction("Index");
         }

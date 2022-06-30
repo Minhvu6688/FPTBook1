@@ -25,7 +25,7 @@ namespace FPTBook1.Areas.Identity.Pages.Account
         private readonly UserManager<IdentityUser> _userManager;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
-        //Bước 1: tạo Select List để chọn Role khi register tài khoản mới
+        //Step 1: create a Select List to select Role when registering a new account
         public List<SelectListItem> Roles { get; set; }
 
         public RegisterModel(
@@ -38,8 +38,9 @@ namespace FPTBook1.Areas.Identity.Pages.Account
             _signInManager = signInManager;
             _logger = logger;
             _emailSender = emailSender;
-            //Bước 2: hiển thị các role trong DB để chọn trong form Registration
-            //Note: Các role phải tương ứng với bảng Role trong DB
+
+            //Step 2: display the roles in the DB to select in the Registration form
+            //Note: The roles must correspond to the Roles table in the DB
             Roles = new List<SelectListItem>(){
                     new SelectListItem { Text = "Admin", Value = "Admin" },
                     new SelectListItem { Text = "Customer", Value = "Customer" },
@@ -73,7 +74,7 @@ namespace FPTBook1.Areas.Identity.Pages.Account
             [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
             public string ConfirmPassword { get; set; }
 
-            //Bước 3: add thêm attribute UserRole trong Model
+            // Step 3: add UserRole attribute in Model
             [Required]
             [Display(Name = "User Role")]
             public string UserRole { get; set; }
@@ -106,7 +107,7 @@ namespace FPTBook1.Areas.Identity.Pages.Account
                         values: new { area = "Identity", userId = user.Id, code = code, returnUrl = returnUrl },
                         protocol: Request.Scheme);
 
-                    //Bước 4: Add role vào tài khoản người dùng đã đăng ký nếu thông tin nhập vào hợp lệ
+                    //Step 4: Add the role to the registered user account if the input is valid
                     await _userManager.AddToRoleAsync(user, Input.UserRole);
 
                     await _emailSender.SendEmailAsync(Input.Email, "Confirm your email",

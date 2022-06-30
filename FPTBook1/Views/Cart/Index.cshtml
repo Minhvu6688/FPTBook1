@@ -1,1 +1,40 @@
-﻿
+﻿@model FPTBook1.Models.Cart
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Document</title>
+</head>
+<body>
+    <center>
+        <h1>Cart number @Model.Id detail</h1>
+    </center><br />
+    <table class="table table-responsive">
+        <tr>
+            <th>Cart ID</th>
+            <th>Book Name</th>
+            <th>Cart Date</th>
+            @*<th>Book quantity</th>*@
+            <th>Total Price</th>
+            @*th<>Payment method</th>*@
+        </tr>
+        <tr>
+            <td>@Model.Id</td>
+            <td>
+                <a asp-controller="Book" asp-action="BookDetail" asp-route-id="@Model.BookId">
+                    <img src="@Model.Book.Image" width="150" height="180" /><br />
+                    <h2>@Model.Book.Name</h2>
+                </a>
+            </td>
+            <td>@Model.Cart_Date.ToShortDateString()</td>
+            <td>@Model.Quantity</td>
+            <td>@(Model.Quantity * Model.Book.Price)</td>
+            @*<td>@Model.Payment</td>*@
+        </tr>
+    </table>
+</body>
+</html>
