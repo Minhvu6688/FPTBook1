@@ -31,7 +31,6 @@ namespace FPTBook1.Controllers
             ;
             return View(category);
         }
-
         public IActionResult Delete(int? id)
         {
             if (id == null)
