@@ -45,7 +45,6 @@ namespace FPTBook1.Controllers
             context.SaveChanges();
             return RedirectToAction("Index");
         }
-
         public IActionResult Delete(int? id)
         {
             if (id == null)
