@@ -18,9 +18,8 @@
             <th>Cart ID</th>
             <th>Book Name</th>
             <th>Cart Date</th>
-            @*<th>Book quantity</th>*@
             <th>Total Price</th>
-            @*th<>Payment method</th>*@
+           
         </tr>
         <tr>
             <td>@Model.Id</td>
@@ -33,7 +32,7 @@
             <td>@Model.Cart_Date.ToShortDateString()</td>
             <td>@Model.Quantity</td>
             <td>@(Model.Quantity * Model.Book.Price)</td>
-            @*<td>@Model.Payment</td>*@
+            
         </tr>
     </table>
 </body>
