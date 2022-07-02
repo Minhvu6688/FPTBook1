@@ -42,6 +42,7 @@ namespace FPTBook1.Data
         }
         private void SeedCategory(ModelBuilder modelBuilder)
         {
+
             modelBuilder.Entity<Category>().HasData(
                 new Category { Id = 1, Name = "Truyen thieu nhi" },
                 new Category { Id = 2, Name = "Truyen Tranh" },
@@ -51,6 +52,7 @@ namespace FPTBook1.Data
         }
         private void SeedBook(ModelBuilder modelBuilder)
         {
+
             modelBuilder.Entity<Book>().HasData(
                 new Book { Id = 1, Name = "O Long vien", Price = 25000, Quantity = 10, Image = "https://store-images.s-microsoft.com/image/apps.22817.9007199266705314.fd912ef5-5ce8-41d7-a270-2a522ef4542a.452c3f51-eed5-43eb-b715-11c508dfb2c7?mode=scale&q=90&h=300&w=300", CategoryId = 1 },
                 new Book { Id = 2, Name = "Doraemon", Price = 30000, Quantity = 20, Image = "https://salt.tikicdn.com/ts/product/e4/10/e3/1396373bfbafe6f8787bc7df79208060.jpg", CategoryId = 1 },
@@ -66,6 +68,7 @@ namespace FPTBook1.Data
                 new Cart { Id = 1, BookId =1, Cart_Date = DateTime.Parse("2022-06-30"), Quantity = 1 },
                 new Cart { Id = 2, BookId = 2, Cart_Date = DateTime.Parse("2022-06-30"), Quantity = 2 },
                 new Cart { Id = 3, BookId = 3, Cart_Date = DateTime.Parse("2022-06-30"), Quantity = 3 }
+
                 );
         }
         private void SeedUser(ModelBuilder modelBuilder)
